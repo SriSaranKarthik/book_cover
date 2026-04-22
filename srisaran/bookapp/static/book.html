@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Digital Awakening — Book Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #030712; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; font-family: 'Rajdhani', sans-serif; }
+.page-header { color: #64748b; font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; text-align: center; }
+.book-wrapper { display: flex; align-items: stretch; filter: drop-shadow(0 40px 80px rgba(0,200,255,0.15)) drop-shadow(0 20px 40px rgba(0,0,0,0.8)); }
+
+.spine { width: 48px; background: linear-gradient(180deg,#0a0f1e 0%,#0d1b3e 50%,#0a0f1e 100%); border-left:1px solid #1a3a6e; border-top:1px solid #1a3a6e; border-bottom:1px solid #1a3a6e; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:24px 0; position:relative; overflow:hidden; }
+.spine::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:1px; height:100%; background:linear-gradient(180deg,transparent,#00c8ff44,#00c8ff88,#00c8ff44,transparent); }
+.spine-title { writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); font-family:'Orbitron',monospace; font-size:9px; font-weight:700; letter-spacing:3px; color:#00c8ff; text-transform:uppercase; white-space:nowrap; }
+.spine-author { writing-mode:vertical-rl; transform:rotate(180deg); font-family:'Rajdhani',sans-serif; font-size:9px; letter-spacing:2px; color:#4a7fa5; text-transform:uppercase; white-space:nowrap; }
+.spine-pub { font-family:'Share Tech Mono',monospace; font-size:9px; color:#1a4a6e; letter-spacing:1px; }
+
+.cover-front { width:520px; min-height:740px; background:#050b1a; border:1px solid #1a3a6e; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+.cover-front::before { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(0,200,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,0.03) 1px,transparent 1px); background-size:40px 40px; z-index:0; }
+.glow-orb-1 { position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(0,150,255,0.18) 0%,rgba(0,50,150,0.08) 50%,transparent 70%); z-index:0; animation:pulse 4s ease-in-out infinite; }
+.glow-orb-2 { position:absolute; bottom:120px; left:-60px; width:250px; height:250px; border-radius:50%; background:radial-gradient(circle,rgba(100,0,255,0.12) 0%,transparent 70%); z-index:0; animation:pulse 6s ease-in-out infinite reverse; }
+
+@keyframes pulse { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+@keyframes scanline { 0%{top:-4px} 100%{top:100%} }
+@keyframes flicker { 0%,96%,100%{opacity:1} 97%{opacity:0.8} 98%{opacity:1} 99%{opacity:0.7} }
+@keyframes drift { 0%,100%{transform:translateY(0px) rotate(0deg)} 33%{transform:translateY(-6px) rotate(1deg)} 66%{transform:translateY(3px) rotate(-0.5deg)} }
+
+.scanline { position:absolute; left:0; right:0; height:4px; background:linear-gradient(180deg,transparent,rgba(0,200,255,0.06),transparent); z-index:3; animation:scanline 8s linear infinite; pointer-events:none; }
+
+.top-bar { position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; padding:18px 28px 14px; border-bottom:1px solid rgba(0,200,255,0.1); }
+.publisher-badge { display:flex; align-items:center; gap:8px; }
+.pub-icon { width:28px; height:28px; border:1px solid #00c8ff88; border-radius:4px; display:flex; align-items:center; justify-content:center; font-family:'Orbitron',monospace; font-size:9px; font-weight:900; color:#00c8ff; background:rgba(0,200,255,0.08); letter-spacing:1px; }
+.pub-name { font-family:'Share Tech Mono',monospace; font-size:10px; color:#4a7fa5; letter-spacing:2px; text-transform:uppercase; }
+.edition-badge { font-family:'Share Tech Mono',monospace; font-size:9px; color:#00c8ff; background:rgba(0,200,255,0.08); border:1px solid rgba(0,200,255,0.25); padding:4px 10px; border-radius:2px; letter-spacing:2px; text-transform:uppercase; }
+
+.tag-strip { position:relative; z-index:2; display:flex; gap:8px; padding:10px 28px; background:rgba(0,200,255,0.03); border-bottom:1px solid rgba(0,200,255,0.06); }
+.tag { font-family:'Share Tech Mono',monospace; font-size:8px; color:#2a6a8a; background:rgba(0,200,255,0.05); border:1px solid rgba(0,200,255,0.1); padding:2px 8px; border-radius:2px; letter-spacing:1.5px; text-transform:uppercase; }
+.tag.accent { color:#00c8ff88; border-color:rgba(0,200,255,0.2); }
+
+/* HERO: smaller height, diagram shrunk via width/positioning */
+.hero-art { position:relative; z-index:2; height:120px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.neural-svg { position:absolute; width:55%; height:auto; left:22.5%; top:5%; opacity:0.85; animation:drift 10s ease-in-out infinite; }
+
+.title-block { position:relative; z-index:2; padding:20px 28px 0; }
+.overline { font-family:'Share Tech Mono',monospace; font-size:9px; color:#00c8ff; letter-spacing:4px; text-transform:uppercase; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+.overline::before { content:''; display:block; width:24px; height:1px; background:#00c8ff; }
+.main-title { font-family:'Orbitron',monospace; font-size:34px; font-weight:900; line-height:1.1; color:#ffffff; text-transform:uppercase; letter-spacing:-0.5px; animation:flicker 8s infinite; }
+.title-accent { color:#00c8ff; display:block; font-size:28px; }
+.subtitle { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:300; color:#4a7fa5; letter-spacing:1px; line-height:1.6; margin-top:10px; padding-left:34px; border-left:2px solid rgba(0,200,255,0.2); }
+
+.stats-row { position:relative; z-index:2; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:20px 28px 0; border:1px solid rgba(0,200,255,0.1); border-radius:4px; overflow:hidden; background:rgba(0,200,255,0.05); }
+.stat-cell { background:rgba(5,11,26,0.9); padding:10px 14px; display:flex; flex-direction:column; gap:2px; }
+.stat-cell+.stat-cell { border-left:1px solid rgba(0,200,255,0.1); }
+.stat-num { font-family:'Orbitron',monospace; font-size:18px; font-weight:700; color:#00c8ff; }
+.stat-label { font-family:'Share Tech Mono',monospace; font-size:8px; color:#2a5a78; letter-spacing:1.5px; text-transform:uppercase; }
+
+.synopsis { position:relative; z-index:2; padding:16px 28px 0; }
+.synopsis-label { font-family:'Share Tech Mono',monospace; font-size:8px; color:#00c8ff66; letter-spacing:3px; text-transform:uppercase; margin-bottom:8px; }
+.synopsis-text { font-family:'Rajdhani',sans-serif; font-size:13px; font-weight:400; color:#3a6a90; line-height:1.65; }
+.synopsis-text em { color:#5a9abaaa; font-style:normal; }
+
+.topics-grid { position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:6px; padding:14px 28px 0; }
+.topic-chip { font-family:'Rajdhani',sans-serif; font-size:11px; font-weight:600; color:#2a6a8a; background:rgba(0,200,255,0.04); border:1px solid rgba(0,200,255,0.12); padding:3px 10px; border-radius:2px; letter-spacing:0.5px; }
+.topic-chip.hot { color:#00c8ffaa; border-color:rgba(0,200,255,0.25); background:rgba(0,200,255,0.07); }
+
+.blurb-strip { position:relative; z-index:2; margin:12px 28px 0; padding:10px 14px; background:rgba(0,200,255,0.04); border-left:2px solid #00c8ff44; border-radius:0 4px 4px 0; }
+.blurb-text { font-family:'Rajdhani',sans-serif; font-size:12px; font-style:italic; color:#2a6a90; line-height:1.5; }
+.blurb-source { font-family:'Share Tech Mono',monospace; font-size:8px; color:#00c8ff55; letter-spacing:1px; margin-top:4px; text-transform:uppercase; }
+
+.author-strip { position:relative; z-index:2; margin:18px 28px 0; border-top:1px solid rgba(0,200,255,0.1); padding-top:14px; display:flex; align-items:center; gap:14px; }
+.author-photo { width:52px; height:60px; border-radius:4px; border:1px solid rgba(0,200,255,0.3); background:linear-gradient(135deg,#0a1a30,#1a3a60); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 0 20px rgba(0,200,255,0.15); overflow:hidden; }
+.author-photo img { width:100%; height:100%; object-fit:cover; }
+.author-info { flex:1; }
+.author-name { font-family:'Orbitron',monospace; font-size:12px; font-weight:700; color:#e0f4ff; letter-spacing:1px; text-transform:uppercase; }
+.author-id { font-family:'Share Tech Mono',monospace; font-size:9px; color:#00c8ff66; letter-spacing:1px; margin-top:2px; }
+.author-role { font-family:'Rajdhani',sans-serif; font-size:11px; color:#3a6a90; margin-top:4px; }
+.rating-row { display:flex; align-items:center; gap:4px; margin-top:5px; }
+.star { color:#00c8ff; font-size:9px; }
+.rating-txt { font-family:'Share Tech Mono',monospace; font-size:9px; color:#2a6a8a; letter-spacing:1px; margin-left:2px; }
+
+.bottom-bar { position:relative; z-index:2; margin-top:auto; border-top:1px solid rgba(0,200,255,0.12); padding:12px 28px; display:flex; align-items:center; justify-content:space-between; background:rgba(0,200,255,0.02); }
+.bottom-left { display:flex; flex-direction:column; gap:2px; }
+.dept-badge { font-family:'Orbitron',monospace; font-size:11px; font-weight:700; color:#00c8ff; letter-spacing:2px; }
+.dept-sub { font-family:'Share Tech Mono',monospace; font-size:8px; color:#1a4a6e; letter-spacing:2px; text-transform:uppercase; }
+.barcode-area { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+.barcode { display:flex; gap:2px; align-items:flex-end; }
+.bar { background:#1a3a5e; border-radius:1px; }
+.isbn { font-family:'Share Tech Mono',monospace; font-size:7px; color:#1a3a5e; letter-spacing:1px; }
+
+.corner { position:absolute; width:20px; height:20px; z-index:3; }
+.corner-tl { top:8px; left:8px; border-top:1px solid rgba(0,200,255,0.4); border-left:1px solid rgba(0,200,255,0.4); }
+.corner-tr { top:8px; right:8px; border-top:1px solid rgba(0,200,255,0.4); border-right:1px solid rgba(0,200,255,0.4); }
+.corner-bl { bottom:8px; left:8px; border-bottom:1px solid rgba(0,200,255,0.4); border-left:1px solid rgba(0,200,255,0.4); }
+.corner-br { bottom:8px; right:8px; border-bottom:1px solid rgba(0,200,255,0.4); border-right:1px solid rgba(0,200,255,0.4); }
+</style>
+</head>
+<body>
+
+<div class="page-header">◈ &nbsp; K SRISARAN KARTHIK &nbsp;·&nbsp; 212224230275 &nbsp; ◈</div>
+
+<div class="book-wrapper">
+
+  <!-- SPINE -->
+  <div class="spine">
+    <div class="spine-title">The Digital Awakening</div>
+    <div class="spine-author">K. Srisaran Karthik</div>
+    <div class="spine-pub">SEC</div>
+  </div>
+
+  <!-- FRONT COVER -->
+  <div class="cover-front">
+    <div class="scanline"></div>
+    <div class="glow-orb-1"></div>
+    <div class="glow-orb-2"></div>
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="publisher-badge">
+        <div class="pub-icon">SEC</div>
+        <div class="pub-name">SEC Insights Press</div>
+      </div>
+      <div class="edition-badge">◈ Special Edition</div>
+    </div>
+
+    <!-- TAG STRIP -->
+    <div class="tag-strip">
+      <span class="tag accent"># ARTIFICIAL INTELLIGENCE</span>
+      <span class="tag"># MACHINE LEARNING</span>
+      <span class="tag"># TRANSHUMANISM</span>
+      <span class="tag accent"># 2025</span>
+    </div>
+
+    <!-- HERO ART — smaller, no label -->
+    <div class="hero-art">
+      <svg class="neural-svg" viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cg" cx="50%" cy="50%" r="55%">
+            <stop offset="0%" stop-color="#00c8ff" stop-opacity="0.25"/>
+            <stop offset="60%" stop-color="#0040a0" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#050b1a" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <ellipse cx="260" cy="110" rx="180" ry="100" fill="url(#cg)"/>
+        <circle cx="60" cy="60" r="5" fill="#00c8ff" opacity="0.6"/>
+        <circle cx="60" cy="110" r="5" fill="#00c8ff" opacity="0.6"/>
+        <circle cx="60" cy="160" r="5" fill="#00c8ff" opacity="0.6"/>
+        <circle cx="150" cy="45" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="150" cy="90" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="150" cy="135" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="150" cy="178" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="260" cy="55" r="8" fill="#00c8ff" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="260" cy="110" r="10" fill="#00c8ff" filter="url(#glow)"/>
+        <circle cx="260" cy="165" r="8" fill="#00c8ff" opacity="0.9" filter="url(#glow)"/>
+        <circle cx="370" cy="45" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="370" cy="90" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="370" cy="135" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="370" cy="178" r="6" fill="#00c8ff" opacity="0.7"/>
+        <circle cx="460" cy="60" r="5" fill="#00c8ff" opacity="0.6"/>
+        <circle cx="460" cy="110" r="5" fill="#00c8ff" opacity="0.6"/>
+        <circle cx="460" cy="160" r="5" fill="#00c8ff" opacity="0.6"/>
+        <g stroke="#00c8ff" stroke-width="0.5" opacity="0.2" fill="none">
+          <line x1="65" y1="60" x2="144" y2="45"/><line x1="65" y1="60" x2="144" y2="90"/><line x1="65" y1="60" x2="144" y2="135"/>
+          <line x1="65" y1="110" x2="144" y2="45"/><line x1="65" y1="110" x2="144" y2="90"/><line x1="65" y1="110" x2="144" y2="135"/><line x1="65" y1="110" x2="144" y2="178"/>
+          <line x1="65" y1="160" x2="144" y2="90"/><line x1="65" y1="160" x2="144" y2="135"/><line x1="65" y1="160" x2="144" y2="178"/>
+        </g>
+        <g stroke="#00c8ff" stroke-width="0.6" opacity="0.3" fill="none">
+          <line x1="156" y1="45" x2="252" y2="55"/><line x1="156" y1="45" x2="252" y2="110"/>
+          <line x1="156" y1="90" x2="252" y2="55"/><line x1="156" y1="90" x2="252" y2="110"/><line x1="156" y1="90" x2="252" y2="165"/>
+          <line x1="156" y1="135" x2="252" y2="110"/><line x1="156" y1="135" x2="252" y2="165"/>
+          <line x1="156" y1="178" x2="252" y2="110"/><line x1="156" y1="178" x2="252" y2="165"/>
+        </g>
+        <g stroke="#00c8ff" stroke-width="0.6" opacity="0.3" fill="none">
+          <line x1="268" y1="55" x2="364" y2="45"/><line x1="268" y1="55" x2="364" y2="90"/>
+          <line x1="268" y1="110" x2="364" y2="45"/><line x1="268" y1="110" x2="364" y2="90"/><line x1="268" y1="110" x2="364" y2="135"/><line x1="268" y1="110" x2="364" y2="178"/>
+          <line x1="268" y1="165" x2="364" y2="135"/><line x1="268" y1="165" x2="364" y2="178"/>
+        </g>
+        <g stroke="#00c8ff" stroke-width="0.5" opacity="0.2" fill="none">
+          <line x1="376" y1="45" x2="455" y2="60"/><line x1="376" y1="45" x2="455" y2="110"/>
+          <line x1="376" y1="90" x2="455" y2="60"/><line x1="376" y1="90" x2="455" y2="110"/>
+          <line x1="376" y1="135" x2="455" y2="110"/><line x1="376" y1="135" x2="455" y2="160"/>
+          <line x1="376" y1="178" x2="455" y2="110"/><line x1="376" y1="178" x2="455" y2="160"/>
+        </g>
+        <g stroke="#00c8ff" stroke-width="1.5" opacity="0.7" fill="none">
+          <line x1="65" y1="110" x2="156" y2="90"/>
+          <line x1="156" y1="90" x2="252" y2="110"/>
+          <line x1="268" y1="110" x2="364" y2="135"/>
+          <line x1="376" y1="135" x2="455" y2="110"/>
+        </g>
+        <polygon points="260,85 278,95 278,115 260,125 242,115 242,95" fill="none" stroke="#00c8ff" stroke-width="0.8" opacity="0.5"/>
+        <polygon points="260,70 292,87 292,123 260,140 228,123 228,87" fill="none" stroke="#00c8ff" stroke-width="0.4" opacity="0.25"/>
+        <g opacity="0.15">
+          <line x1="0" y1="30" x2="520" y2="30" stroke="#00c8ff" stroke-width="0.3" stroke-dasharray="4 8"/>
+          <line x1="0" y1="190" x2="520" y2="190" stroke="#00c8ff" stroke-width="0.3" stroke-dasharray="4 8"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- TITLE BLOCK -->
+    <div class="title-block">
+      <div class="overline">Definitive Guide</div>
+      <div class="main-title">
+        The Digital<br>
+        <span class="title-accent">Awakening</span>
+      </div>
+      <div class="subtitle">
+        Unveiling the Next Era of Intelligence, Innovation &amp; Human Evolution in the Age of Machine Consciousness
+      </div>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Core Chapters</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">340+</div>
+        <div class="stat-label">Research Insights</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">2025</div>
+        <div class="stat-label">First Edition</div>
+      </div>
+    </div>
+
+    <!-- SYNOPSIS -->
+    <div class="synopsis">
+      <div class="synopsis-label">// Synopsis</div>
+      <div class="synopsis-text">
+        A profound exploration of how <em>artificial general intelligence</em> is reshaping civilization — from autonomous systems redefining labor to neural interfaces merging mind and machine. Charts the critical inflection points where technology ceases to be a tool and becomes a <em>co-creator</em> of human destiny.
+      </div>
+    </div>
+
+    <!-- TOPICS -->
+    <div class="topics-grid">
+      <span class="topic-chip hot">AGI &amp; Consciousness</span>
+      <span class="topic-chip hot">Large Language Models</span>
+      <span class="topic-chip">Neuralink &amp; BMI</span>
+      <span class="topic-chip">Ethical Frameworks</span>
+      <span class="topic-chip hot">Quantum Computing</span>
+      <span class="topic-chip">Post-Human Society</span>
+      <span class="topic-chip">Robotics &amp; Automation</span>
+    </div>
+
+    <!-- BLURB -->
+    <div class="blurb-strip">
+      <div class="blurb-text">"The most lucid account of where AI is taking us — essential reading for anyone navigating the digital frontier."</div>
+      <div class="blurb-source">— SEC Technology Review, Vol. 4</div>
+    </div>
+
+    <!-- AUTHOR STRIP -->
+    <div class="author-strip">
+      <div class="author-photo">
+        <img src="me.jpg" alt="K Srisaran Karthik"
+          onerror="this.parentElement.style.background='transparent'; this.parentElement.style.border='none'; this.parentElement.style.boxShadow='none'; this.style.display='none';"/>
+      </div>
+      <div class="author-info">
+        <div class="author-name">K. Srisaran Karthik</div>
+        <div class="author-id">[ ID: 212224230275 ]</div>
+        <div class="author-role">AI Researcher · Dept. of Computing Sciences</div>
+        <div class="rating-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          <span class="star">★</span><span class="star">★</span>
+          <span class="rating-txt">4.9 / 5.0 — Peer Reviewed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="bottom-bar">
+      <div class="bottom-left">
+        <div class="dept-badge">SEC</div>
+        <div class="dept-sub">Saveetha Engineering College</div>
+        <div class="dept-sub" style="margin-top:2px;">Techno AI Revolution Series</div>
+      </div>
+      <div class="barcode-area">
+        <div class="barcode" id="bc"></div>
+        <div class="isbn">ISBN 978-81-XXXX-XXX-X</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const bc = document.getElementById('bc');
+const widths = [3,1,2,1,1,2,3,1,2,1,3,2,1,1,2,1,3,2,1,2,1,3,1,1,2,3,1,2];
+widths.forEach((w,i) => {
+  const b = document.createElement('div');
+  b.className = 'bar';
+  b.style.width = w + 'px';
+  b.style.height = (18 + (i % 3 === 0 ? 5 : 0)) + 'px';
+  b.style.background = i % 3 === 0 ? '#00c8ff33' : '#1a3a5e';
+  bc.appendChild(b);
+});
+</script>
+</body>
+</html>
